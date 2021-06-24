@@ -32,7 +32,6 @@ local_dependency: {
   }
 }
 
-
 local_dependency: {
   project: "marketplace_zendesk"
   override_constant: SCHEMA_NAME {
@@ -48,7 +47,6 @@ local_dependency: {
     value: "leigha-bq-dev"
   }
 }
-
 
 local_dependency: {
   project: "marketplace_crashlytics"

@@ -239,8 +239,8 @@ view: events {
 
   dimension_group: event {
     type: time
-    sql: ${TABLE}.event_date;;
-    datatype: yyyymmdd
+    sql: PARSE_DATE('%Y%m%d', events.event_date);;
+    datatype: date
   }
 
   dimension: event_dimensions__hostname {

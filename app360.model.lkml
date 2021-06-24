@@ -44,13 +44,6 @@ explore: events {
   }
 }
 
-explore: account_facts {
-  join: account {
-    relationship: one_to_one
-    sql_on: ${account.id} = ${account_facts.account_id} ;;
-  }
-}
-
 # crash events, combined with JIRA issues
 explore: crashlytics {
   fields: [ALL_FIELDS*, -issue.needs_triage, -issue.is_approaching_sla, -account_owner.manager]
@@ -66,7 +59,7 @@ explore: crashlytics {
   }
   join: account_facts {
     relationship: one_to_one
-    sql: ${account_facts.account_id}=${account.id} ;;
+    sql_on: ${account_facts.account_id}=${account.id} ;;
   }
   join: account_owner {
     from: user
@@ -132,14 +125,21 @@ explore: opportunity {
 
 
 
-# explore: ticket {
-#   join: issue {
-#     sql_where:  ;;
-#     relationship: many_to_one
-#     sql_on: ${ticket.id} in unnest(${issues.custom_fields}) ;;
-#   }
-#   join: issue_facts {}
-# }
+explore: ticket {
+  fields: [ALL_FIELDS*, -ticket.minutes_to_first_response, -ticket.minutes_to_first_response, -ticket.days_to_solve,
+    -issue.is_approaching_sla,-issue.needs_triage,-ticket.my_avg_days_to_solve,-ticket.hours_to_solve,
+    -ticket.days_to_first_response,-ticket.hours_to_first_response, -issue.number_of_open_issues, -issue.number_of_closed_issues]
+  join: issue {
+    type: inner
+    sql_on: ${ticket.id} in unnest(${issue.zendesk_ticket_ids});;
+    relationship: many_to_one
+  }
+  join: issue_facts {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${issue_facts.issue_id}=${issue.external_id} ;;
+  }
+}
 
 
 
