@@ -1,5 +1,5 @@
-# App360
-GitHub repository for SQL samples and LookML for the App360 Smart Analytics Reference Pattern
+# Unified Application Analytics
+GitHub repository for SQL samples and LookML for the Unified Application Analytics Reference Pattern
 
 - [Technical Reference Guide](*)
 - [Blog Post](*)
