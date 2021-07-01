@@ -1,8 +1,8 @@
 # Unified Application Analytics
 GitHub repository for SQL samples and LookML for the Unified Application Analytics Reference Pattern
 
-- [Technical Reference Guide](*)
-- [Blog Post](*)
+- [Technical Reference Guide](https://cloud.google.com/architecture/creating-unified-app-analytics-platform)
+- [Blog Post](https://cloud.google.com/blog/topics/developers-practitioners/creating-unified-analytics-platform-digital-natives)
 - [Demo Video](*)
 - [SQL Samples for metric definitions](/sql_samples)
 
