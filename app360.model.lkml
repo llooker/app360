@@ -47,36 +47,48 @@ explore: events {
 # crash events, combined with JIRA issues
 explore: crashlytics {
   fields: [ALL_FIELDS*, -issue.needs_triage, -issue.is_approaching_sla, -account_owner.manager]
+  join: issue_facts {
+    view_label: "Crashlytics"
+    sql_on: ${issue_facts.issue_id}=${crashlytics.issue_id} ;;
+    relationship: many_to_one
+  }
   join: user_details {
+    view_label: "User (Firestore)"
     type: inner
     relationship: many_to_one
     sql_on: ${user_details.data__user_id} = ${crashlytics.user__id} ;;
   }
   join: account {
+    view_label: "Account (SFDC)"
     type: inner
     relationship: many_to_many
     sql_on: ${account.id} = ${user_details.data__account_id} ;;
   }
   join: account_facts {
+    view_label: "Account (SFDC)"
     relationship: one_to_one
     sql_on: ${account_facts.account_id}=${account.id} ;;
   }
   join: account_owner {
+    view_label: "Account (SFDC)"
     from: user
     sql_on: ${account.owner_id} = ${account_owner.id} ;;
     relationship: many_to_one
   }
   join: issue {
+    view_label: "JIRA"
     type: left_outer
     relationship: many_to_one
     sql_on: ${issue.external_id} = ${crashlytics.issue_id} ;;
   }
   join:  status {
+    view_label: "JIRA"
     type:  left_outer
     relationship: many_to_one
     sql_on: ${issue.status} = ${status.id} ;;
   }
   join:  status_category {
+    view_label: "JIRA"
     type:  left_outer
     relationship: many_to_one
     sql_on: ${status.status_category_id} = ${status_category.id} ;;

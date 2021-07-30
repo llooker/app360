@@ -19,6 +19,13 @@ view: account_facts {
     sql: (select sum(amount) from salesforce.opportunity where account_id = ${account_id}) ;;
   }
 
+  dimension: total_acv_tier {
+    type: tier
+    tiers: [10000,50000,100000,500000]
+    style: integer
+    sql: ${total_acv} ;;
+  }
+
   measure: average_number_users {
     type: average
     sql: ${number_of_users} ;;
