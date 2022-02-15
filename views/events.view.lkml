@@ -36,6 +36,13 @@ view: events {
     group_item_label: "Version"
   }
 
+  dimension: new_column {
+    type: string
+    sql: concat(${app_info__version},${app_info__install_source}) ;;
+    group_label: "App Info"
+    group_item_label: "Version"
+  }
+
   dimension: device__advertising_id {
     type: string
     sql: ${TABLE}.device.advertising_id ;;

@@ -28,7 +28,7 @@ local_dependency: {
     value: "marketplace_saleforce_analytics_config"
   }
   override_constant: CONNECTION_NAME {
-    value: "leigha-bq-dev"
+    value: "looker-private-demo"
   }
 }
 

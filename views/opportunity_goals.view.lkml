@@ -1,7 +1,7 @@
 include: "//marketplace_salesforce/opportunity_core.view"
 view: opportunity_goals {
   extends: [opportunity]
-
+  sql_table_name: `looker-private-demo.salesforce.opportunity` ;;
   dimension: days_left_in_quarter {
     group_label: "Closed Date"
     label: "Days Left in Quarter at Close"
