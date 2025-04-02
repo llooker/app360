@@ -14,7 +14,8 @@ include: "//marketplace_jira_new/**/status_core.view"
 include: "//marketplace_salesforce/owner_opp_sorted.view"
 include: "//marketplace_zendesk/**/ticket_core.view"
 
-connection: "leigha-bq-dev"
+# connection: "leigha-bq-dev"
+connection: "alloydb-sarun"
 
 explore: events {
   hidden: yes
